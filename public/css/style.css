@@ -1,0 +1,98 @@
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  /*background-image: url('../images/bg.jpg');*/
+  background-color: #F2F2F2;
+}
+h1{
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0px;
+    padding: 0px;
+    font-weight: normal;
+    font-style: italic;
+}
+.prices-table{     
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 13px;
+    margin: 0 auto;
+    max-width: 300px;
+    width: 95%;
+}
+.prices-table thead th {
+    background-color: #272A2F;
+    color: #ededed;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px;
+    border-bottom: 1px solid #dedede;
+}
+.prices-table thead tr:first-child th {
+    width: 100px;
+    background-color: #363845;
+}
+.prices-table tr{
+  border-bottom: 2px solid #363845;
+}
+.prices-table td {
+    padding: 5px;
+    text-align: center;
+}
+.prices-table tr td{
+    background-color: #272A2F;
+    color: #c0c0c0;
+}
+.prices-table td.no-border{
+    border; 0px;
+}
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;	
+	border-bottom: 10px solid #ACF05C;
+	float: right;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #E55353;
+  float: right;
+}
+.status-block{
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 3px;
+    width: 60px;
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+    transition: background-color 1s ease-in-out;
+}
+.status-block.up{
+  background-color: #99cc00;  
+}
+.status-block.down{
+  background-color: #CC522D;
+}
+.widget-cont{
+  background-color: #353744;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.widget-cont {
+    background-color: #353744;
+    border-radius: 5px;
+    margin: 13px auto;
+    max-width: 320px;
+    width: 80%;
+    padding: 0px 30px 10px 20px;
+    opacity: 0.9;
+    box-shadow: 3px 6px 6px #aaa;
+}
+.prices-table tfoot tr td{
+    background-color: #363845;
+    padding-top: 10px;
+}

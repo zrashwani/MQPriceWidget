@@ -1,0 +1,23 @@
+{
+    "pricesocket": {
+        "port": 443,
+        "host": "127.0.0.1",
+        "timeout": 5,
+        "qoutes": "EURUSD,GBPUSD,USDJPY,USDCHF,AUDUSD,USDCAD,NZDUSD,EURGBP,EURJPY"        
+    },
+    "webserver":{
+        "ip": "127.0.0.1",
+        "port": 9333
+    },
+    "logging": {
+        "appenders": [
+            {
+                "type": "dateFile",
+                "filename": "logs/price-widget",
+                "pattern": "-yyyy-MM-dd",
+                "alwaysIncludePattern": false
+            }
+        ],
+        "level": "DEBUG"
+    }    
+}

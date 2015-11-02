@@ -1,0 +1,19 @@
+{
+  "name": "prices_feed",
+  "version": "1.0.0",
+  "description": "metaqoutes prices feed for real time prices widget",
+  "main": "pricewidget.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "prices",
+    "metaqoute"
+  ],
+  "author": "zrashwani <zrashwani.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+    "log4js":  "0.6.*"
+  }
+}

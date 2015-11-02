@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+<body>
+   
+   <div class="widget-cont">
+   <table class="prices-table">
+      <thead>
+          <tr>
+            <th colspan="2">
+              <h1>Real-Time Prices</h1>
+            </th>
+          </tr>
+          <tr>
+            <th>Pair</th>
+	          <th>Price</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% for(k in prices){ %>	 
+	   <% val_info = prices[k] %>
+           <tr>
+             <td><div class="symbol"><%= k %></div></td>
+             <td>
+                <div data-pair="<%= k %>" class="status-block <%= val_info.p_status %>"><%= val_info.price %>
+                </div>
+             </td>
+           </tr>
+        <% } %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">            
+            <time class="update-time"></time>
+          </td>
+        </tr>
+      </tfoot>
+   </table>
+ </div>
+
+<script type="text/javascript">
+     var source = new EventSource("/update.json");
+     source.onmessage = function(e) {
+        changed = JSON.parse(e.data); 
+        change_time = false;        
+  	    for(i in changed){	  
+	         val_info = changed[i];
+           price_elem = $('div[data-pair="'+val_info.symbol+'"]');	   
+           if(parseFloat(val_info.price) != parseFloat(price_elem.html()) ){
+           
+           if(val_info.p_status == 'up' ){
+              highlight_color = '#99cc00';
+           }else{
+              highlight_color = '#CC522D';
+           }           
+           price_elem.html(val_info.price);
+           price_elem.data('status',val_info.p_status);
+           //price_elem.effect("highlight", {color: highlight_color}, 1000, function(){
+              var selected_tr = price_elem.parents('tr:first');            
+              status_block = selected_tr.find('div.status-block');
+              status_block.removeClass('up');
+              status_block.removeClass('down');
+              status_block.addClass('status-block '+val_info.p_status);
+
+           //});     
+           currentdate = new Date();      	 
+           change_time = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes();           
+          } 
+          $('.update-time').html(change_time);
+	     }	
+     };
+
+     source.onerror = function(event) {
+       console.log(event.message);
+     };
+</script>
+</body>
+</html>
